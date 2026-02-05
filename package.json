@@ -1,0 +1,38 @@
+{
+  "name": "skills-hub-client",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Skills Hub client powered by Electron + Vite + TypeScript",
+  "main": "dist/main/index.js",
+  "scripts": {
+    "dev": "concurrently -k \"tsc -p tsconfig.node.json --watch\" \"vite\" \"wait-on dist/main/index.js && wait-on tcp:5173 && electron .\"",
+    "build": "tsc -p tsconfig.node.json && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -p tsconfig.node.json --noEmit && tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.0.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "electron": "^30.0.0",
+    "i18next": "^23.12.2",
+    "lucide-react": "^0.451.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-i18next": "^14.1.3",
+    "tailwind-merge": "^2.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.0.1",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "wait-on": "^7.2.0"
+  }
+}

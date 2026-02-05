@@ -11,3 +11,12 @@
 最新需求条目：
 
 - `docs/requirements/REQ-0002-tech-stack.md`
+
+## 客户端开发
+
+本客户端使用 Electron + Vite + TypeScript，包管理器为 pnpm：
+
+```bash
+pnpm install
+pnpm dev
+```
