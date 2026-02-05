@@ -5,7 +5,9 @@
   "description": "Skills Hub client powered by Electron + Vite + TypeScript",
   "main": "dist/main/index.js",
   "scripts": {
-    "dev": "concurrently -k \"tsc -p tsconfig.node.json --watch\" \"vite\" \"wait-on dist/main/index.js && wait-on tcp:5173 && electron .\"",
+    "dev:main": "tsc -p tsconfig.node.json",
+    "dev:electron": "nodemon --watch dist/main --watch dist/preload --watch dist/shared --delay 0.2 --exec electron .",
+    "dev": "pnpm run dev:main && concurrently -k \"tsc -p tsconfig.node.json --watch\" \"vite\" \"wait-on tcp:5173 && pnpm run dev:electron\"",
     "build": "tsc -p tsconfig.node.json && vite build",
     "preview": "vite preview",
     "typecheck": "tsc -p tsconfig.node.json --noEmit && tsc -p tsconfig.json --noEmit"
@@ -29,6 +31,7 @@
     "@vitejs/plugin-react": "^4.3.3",
     "autoprefixer": "^10.4.20",
     "concurrently": "^9.0.1",
+    "nodemon": "^3.1.9",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.6.3",

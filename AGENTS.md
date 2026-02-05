@@ -32,6 +32,11 @@
 
 （可选）用脚本生成骨架：`python3 skills/doc-bdd-governance/scripts/new_requirement.py --title "..."`。
 
+## Git 远程操作（强制）
+
+- 未经用户明确指令，不执行 `git push` / `git push --force` / 创建远程仓库 / 修改远程地址等操作。
+- 默认策略：只提交到本地（`git commit`），等待用户确认后再推送到云端。
+
 ## 推荐工作流（面向自动化 Agent）
 
 1. 先读 `README.md` 与 `docs/project-doc-v1.0.md`，确认变更目标与影响范围。

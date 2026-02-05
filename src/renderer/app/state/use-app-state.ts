@@ -7,6 +7,14 @@ export const useAppState = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const normalizeError = (err: unknown) => {
+    const message = err instanceof Error ? err.message : String(err);
+    if (message.includes("No handler registered for 'skillsHub:getState'")) {
+      return "IPC handler is not registered. If you're in dev, restart `pnpm run dev` (main/preload changes require an Electron restart).";
+    }
+    return message;
+  };
+
   const refresh = useCallback(async () => {
     const api = window.skillsHub;
     if (!api) {
@@ -21,7 +29,7 @@ export const useAppState = () => {
       setState(next);
       setError(null);
     } catch (err) {
-      setError(err instanceof Error ? err.message : String(err));
+      setError(normalizeError(err));
     } finally {
       setLoading(false);
     }
@@ -40,4 +48,3 @@ export const useAppState = () => {
 
   return { state, loading, error, refresh, setActiveProfile };
 };
-
