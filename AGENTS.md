@@ -22,9 +22,18 @@
 - 可回滚：避免同时做“内容更新 + 格式化重排”；如确需重排，单独提交。
 - 不泄露敏感信息：不要把个人账号、密钥、内网域名/地址写入公开仓库；示例请使用占位符（如 `example.com`、`ORG`、`PROJECT`）。
 
+## 需求落库与 BDD 驱动（强制）
+
+- 所有开发需求必须落库到 `docs/requirements/`，并维护 `docs/requirements/ledger.md`（优先追加，避免重排）。
+- 每条需求必须有可验收的 BDD：`docs/bdd/REQ-XXXX-<slug>.feature`（除非在 REQ 中明确说明原因）。
+- 影响仓库协作/约束的规则变更必须同步到根目录 `AGENTS.md`。
+- 影响产品/架构/数据模型的变更必须同步到 `docs/project-doc-v1.0.md`，必要时新增 ADR（建议目录：`docs/adr/`）。
+- 提交信息或 PR 描述需引用 `REQ-XXXX`，确保实现可追溯。
+
+（可选）用脚本生成骨架：`python3 skills/doc-bdd-governance/scripts/new_requirement.py --title "..."`。
+
 ## 推荐工作流（面向自动化 Agent）
 
 1. 先读 `README.md` 与 `docs/project-doc-v1.0.md`，确认变更目标与影响范围。
 2. 只改必要文件；如果需要新增文档，放在 `docs/` 下，并在 `README.md` 增加入口。
 3. 变更完成后，运行仓库已有的格式化/检查命令（如未来引入的 `markdownlint`），并在 PR/提交信息中说明。
-

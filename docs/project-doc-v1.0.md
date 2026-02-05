@@ -475,3 +475,13 @@ agentDefaults:
 
 **可发现、可安装、可治理、可审计、可回滚、可规模化流转。**
 
+---
+
+## 23. 工程演进约定（文档/BDD 驱动）
+
+为保证“可版本化、可审计、可回滚”，本项目采用 **文档或 BDD 驱动**的演进方式：
+
+- 所有开发需求必须落库到 `docs/requirements/`，并维护 `docs/requirements/ledger.md`。
+- 每条需求默认配套 Gherkin `.feature` 作为验收标准：`docs/bdd/REQ-XXXX-<slug>.feature`。
+- 影响协作流程/约束的规则变更必须同步到根目录 `AGENTS.md`。
+- 影响产品/架构/模型的变更必须同步到本文档（或新增 ADR）。

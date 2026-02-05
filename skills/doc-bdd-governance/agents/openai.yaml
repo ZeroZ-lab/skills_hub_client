@@ -1,0 +1,9 @@
+display_name: Doc/BDD Governance
+short_description: Keep all dev requirements stored in docs and expressed as BDD acceptance criteria; keep AGENTS.md and project docs in sync.
+default_prompt: |
+  Apply doc/BDD-driven governance for this change:
+  1) Capture/refresh the requirement in docs/requirements (REQ-XXXX) and update docs/requirements/ledger.md.
+  2) Write/refresh Gherkin scenarios under docs/bdd for acceptance criteria.
+  3) Update AGENTS.md if workflow/rules change; update docs/project-doc-v1.0.md or add ADR if architecture/model changes.
+  4) Only then implement code; keep changes minimal and traceable to REQ + BDD.
+

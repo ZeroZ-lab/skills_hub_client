@@ -4,3 +4,6 @@
 
 - `docs/project-doc-v1.0.md`
 
+仓库内置开发治理 Skill：
+
+- `skills/doc-bdd-governance/`（需求落库 + BDD + AGENTS.md 同步）
