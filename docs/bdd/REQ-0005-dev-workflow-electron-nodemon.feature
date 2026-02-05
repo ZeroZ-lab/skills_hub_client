@@ -3,6 +3,7 @@
 
   背景:
     假设 我使用 pnpm run dev 启动 Electron + Vite 开发环境
+    并且 pnpm 允许 electron 与 esbuild 执行安装脚本（仅内置白名单）
 
   场景: 启动时使用最新 main/preload 产物
     当 我执行 pnpm run dev

@@ -27,6 +27,7 @@
 ### In Scope
 
 - 新增 dev 依赖：`nodemon`（用于监听 `dist/main`、`dist/preload`、`dist/shared` 并重启 Electron）。
+- 为保证 Electron 可运行，pnpm 需允许 `electron` 与 `esbuild` 的依赖安装脚本执行（在 `package.json` 中配置 `pnpm.onlyBuiltDependencies`）。
 - 调整 `pnpm run dev`：
   - 先执行一次 `tsc -p tsconfig.node.json` 生成最新 `dist/` 产物
   - 再启动 watch（`tsc --watch`）与 Vite
