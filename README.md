@@ -7,3 +7,7 @@
 仓库内置开发治理 Skill：
 
 - `skills/doc-bdd-governance/`（需求落库 + BDD + AGENTS.md 同步）
+
+最新需求条目：
+
+- `docs/requirements/REQ-0002-tech-stack.md`

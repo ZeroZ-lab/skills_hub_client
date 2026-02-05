@@ -147,6 +147,15 @@ Enterprise Layer (组织)
 - **Doctor**：冲突、失效路径、协议不兼容、修复建议
 - **Logs**：调用日志、失败归因、审计追踪
 
+### 7.4 客户端技术栈与主题规范
+
+- 语言与框架：TypeScript + Electron，前端基于 Vite 构建
+- UI 与样式：shadcn/ui 组件体系 + Tailwind CSS
+- 国际化：内置 i18n（至少中文与英文），支持后续扩展
+- 主题模式：支持亮色/暗黑两种显示模式
+- 主题色：允许用户自定义主色（Primary Color），并在组件层统一生效
+- 图标：统一使用 Lucide 图标库（Lucide Icons）
+
 ---
 
 ## 8. Agent/CLI 兼容策略（可配置而非写死）
