@@ -1,9 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
-import { ThemeControls } from "@/components/theme-controls";
-import { LanguageSwitch } from "@/components/language-switch";
-import { PrimaryColorPicker } from "@/components/primary-color-picker";
+import { useEffect, useState } from "react";
+import AppShell from "@/app/layout/app-shell";
 
 const PRIMARY_COLOR_KEY = "primaryColor";
 const THEME_KEY = "theme";
@@ -56,7 +52,6 @@ const applyTheme = (theme: "light" | "dark") => {
 };
 
 const App = () => {
-  const { t } = useTranslation();
   const [theme, setTheme] = useState<"light" | "dark">(
     (localStorage.getItem(THEME_KEY) as "light" | "dark") ?? "light"
   );
@@ -74,46 +69,13 @@ const App = () => {
     localStorage.setItem(PRIMARY_COLOR_KEY, primaryColor);
   }, [primaryColor]);
 
-  const themeLabel = useMemo(() => (theme === "dark" ? t("dark") : t("light")), [
-    theme,
-    t
-  ]);
-
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto flex w-full max-w-4xl flex-col gap-8 px-6 py-12">
-        <header className="flex flex-col gap-4">
-          <p className="text-sm font-medium text-muted-foreground">
-            {t("subtitle")}
-          </p>
-          <h1 className="text-3xl font-semibold tracking-tight">{t("title")}</h1>
-          <p className="text-base text-muted-foreground">{t("description")}</p>
-        </header>
-
-        <section className="grid gap-4 rounded-xl border border-border bg-card p-6 shadow-sm">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <ThemeControls
-              theme={theme}
-              onToggle={() => setTheme(theme === "dark" ? "light" : "dark")}
-            />
-            <LanguageSwitch />
-          </div>
-          <div className="flex flex-col gap-4">
-            <PrimaryColorPicker
-              color={primaryColor}
-              onChange={(value) => setPrimaryColor(value)}
-            />
-            <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <span>当前主题：</span>
-              <span className="font-medium text-foreground">{themeLabel}</span>
-            </div>
-          </div>
-          <div>
-            <Button>{t("button")}</Button>
-          </div>
-        </section>
-      </div>
-    </div>
+    <AppShell
+      theme={theme}
+      onToggleTheme={() => setTheme(theme === "dark" ? "light" : "dark")}
+      primaryColor={primaryColor}
+      onChangePrimaryColor={setPrimaryColor}
+    />
   );
 };
 

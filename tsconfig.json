@@ -10,8 +10,9 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/renderer/*"]
+      "@/*": ["src/renderer/*"],
+      "@shared/*": ["src/shared/*"]
     }
   },
-  "include": ["src/renderer", "vite.config.ts"]
+  "include": ["src/renderer", "src/shared", "vite.config.ts"]
 }
